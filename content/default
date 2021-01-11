@@ -1,0 +1,17 @@
+server {
+    listen 80 default_server;
+
+    root /sites;
+    index index.html index.htm;
+
+    location /music {
+        alias /usr/src/stream-music/;
+        autoindex on;
+    }
+
+    server_name localhost;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
